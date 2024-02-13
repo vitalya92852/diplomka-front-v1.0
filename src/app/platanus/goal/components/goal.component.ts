@@ -118,7 +118,7 @@ export class GoalComponent implements OnInit{
     
     
     this.pratctiseChartDiagram = new Chart('practiseDiagram', {
-      type: 'line',
+      type: 'bar',
       data: {
         labels: labels,
         datasets: [{
