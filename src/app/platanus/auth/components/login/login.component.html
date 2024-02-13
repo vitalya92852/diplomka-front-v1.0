@@ -1,0 +1,87 @@
+<!-- <!-- <div class="auth-page">
+  <div class="container page">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 col-xs-12">
+        <h1 class="text-xs-center">Sign In</h1>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <fieldset>
+            <fieldset class="form-group">
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="username"
+                formControlName="username"
+              />
+            </fieldset>
+            <fieldset class="form-group">
+              <input
+                type="password"
+                class="form-control form-control-lg"
+                placeholder="Password"
+                formControlName="password"
+              />
+            </fieldset>
+            <button
+              class="btn btn-lg btn-primary pull-xs-right"
+              type="submit"
+              [disabled]="isSubmitting$ | async"
+            >
+              Sign in
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
+<body>
+    <div class="wrapper">
+        <div class="header">
+              <div class="header__inner">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="" class="logo__img">
+                </div>
+                <nav class="menu">
+                    <ul class="menu__list">
+                        <li class="menu__list-item">
+                            <a href="#" class="menu__list-link">
+                                Цель
+                                <img src="assets/images/goal.png" class="menu__list-link-img">
+                             </a>
+                        </li>
+                        <li class="menu__list-item">
+                            <a href="#" class="menu__list-link">
+                                Статистика
+                                <img src="assets/images/statistic.png" class="menu__list-link-img">
+                            </a>
+                        </li>
+                        <li class="menu__list-item">
+                            <a href="#" class="menu__list-link">
+                                Работа
+                                <img src="assets/images/work.png" class="menu__list-link-img">
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="main">
+            <div class="main__container">
+              <div class="login-form">
+                <h2 class ="login-form-name">Account Login</h2>
+                <form form [formGroup]="form" (ngSubmit)="onSubmit()">
+                  <input type="text" name="username" placeholder="Username" formControlName="username" required>
+                  <input type="password" name="password" placeholder="Password" formControlName="password" required>
+                  <button type="submit" [disabled]="isSubmitting$ | async">Войти</button>
+                </form>
+              </div>
+            </div>
+        </div>
+    </div>
+
+</body> 
+

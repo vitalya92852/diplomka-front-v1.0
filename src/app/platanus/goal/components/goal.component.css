@@ -1,0 +1,250 @@
+
+ html{
+    box-sizing: border-box;
+    background-image: url('/assets/images/bg3.jpg'); 
+    background-size: cover; /* Растягиваем фон на всю площадь */
+    background-repeat: no-repeat; /* Отключаем повторение фона */
+    background-position: center; /* Выравниваем фон по центру */
+    height: 100vh;
+}
+
+*,*::after,*::after,*::before{
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    overflow-x: hidden;
+    margin: -8px;
+    overflow: hidden;
+}
+
+ul{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+body{
+    font-weight: 300;
+    font-size: 14px;
+    
+}
+
+.container{
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: #E3E3E3 1px solid;
+    background-color: rgb(245, 245, 245);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+
+
+   
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo__img {
+    width: 140px;
+    height: 70px;
+}
+
+.logo_name {
+    color: white;
+    font-family: 'Kanit', sans-serif;
+    font-size: 20px; /* Установите соответствующий размер шрифта */
+    margin-left: 10px; /* Добавляем отступ от логотипа */
+}
+
+.menu__list {
+    display: flex;
+    list-style-type: none;
+    font-family: 'Maven Pro', sans-serif;
+    letter-spacing: 5px;
+}
+
+.menu__list-item {
+    margin-right: 30px; 
+    margin-left: 30px;
+    
+}
+
+
+.menu__list-link {
+    display: flex;
+    align-items: center;
+    color: #EA9451;
+    text-decoration: none;
+    font-size: 18px; /* Установите соответствующий размер шрифта */
+    transition: font-size 0.3s ease;
+}
+
+
+
+.menu__list-link-img{
+    margin-left: 10px;
+    height: 25px;
+    width: 25px;
+}
+
+.logout__container {
+    display: flex;
+    align-items: center;
+}
+
+.logout__button {
+    box-sizing: border-box;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #EA9451;
+    border-radius: 0.6em;
+    color: #EA9451;
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 20px;
+    padding: 1.2em 2.8em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    
+  
+    &:hover,
+    &:focus {
+      color: #fff;
+      outline: 0;
+    }
+    
+  }
+
+.btn {
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    &:hover {
+        box-shadow: 0 0 40px 40px #EA9451 inset;
+    }
+}
+
+.main__inner{
+    display: flex;
+}
+
+.main__left {
+    width: 20%;
+    height: 80vh;
+    padding: 40px 20px 40px 20px;
+
+}
+
+.main__left-menu{
+    border-radius: 10px;
+    background-color: rgb(245, 245, 245);
+    color: #EA9451;
+
+}
+
+.main__left-menu-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding-top: 35px; 
+    padding-bottom: 35px; 
+    overflow-y: auto; /* Добавляем вертикальный скроллбар при необходимости */
+    max-height: 500px; /* Задаем максимальную высоту контейнера, чтобы появился скроллбар */
+    font-family: 'Maven Pro', sans-serif;
+}
+
+.main__left-menu-list::-webkit-scrollbar-track {border-radius: 4px;}
+.main__left-menu-list::-webkit-scrollbar {width: 6px;}
+.main__left-menu-list::-webkit-scrollbar-thumb {border-radius: 4px;background: #EA9451;}
+.main__left-menu-list::-webkit-scrollbar-thumb {background: #EA9451;}
+
+
+
+.main__left-menu-left-item-button{
+    border: 0;
+    cursor: pointer;
+    font-size: 22px;
+    background-color: rgb(245, 245, 245);
+    color: #EA9451;
+}
+
+
+
+
+
+
+.main__middle {
+    width: 80%;
+}
+
+.main__middle__container{
+    display: flex;
+    justify-content:space-around;
+    padding: 40px 80px 80px 80px;
+}
+
+
+.academ__goal-info-container{
+    margin-top: 50px;
+   display: flex;
+   justify-content: space-around;
+}
+
+.academ__goal-info-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    border-radius: 100%;
+    font-size: 18px;
+    font-family: 'Maven Pro', sans-serif;
+
+    background-color: rgb(245, 245, 245);
+    color: #EA9451;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    border-radius: 100%;
+    box-shadow: 4px 4px 4px rgba(0.2, 0.2, 0.2, 0.2); 
+}
+
+.academ__goal-info-item-name{
+    padding: 10px;
+    height: 100%;
+
+}
+
+.academ__goal-info-item-grade-divider{
+    margin-top: 10px;
+    width: 100%;
+    border: rgb(224, 217, 217) 1px solid;
+}
+
+.academ__goal-info-item-grade{
+    margin-top: 10px;
+}
+
+

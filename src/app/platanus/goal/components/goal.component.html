@@ -1,0 +1,97 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@300&family=Comfortaa:wght@300&family=Maven+Pro&family=Noto+Sans+JP&family=Roboto:ital,wght@1,100&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header__inner">
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="" class="logo__img">
+        </div>
+        <nav class="menu">
+            <ul class="menu__list">
+                <li class="menu__list-item">
+                    <a href="#" class="menu__list-link">
+                        Цель
+                        <img src="assets/images/goal.png" class="menu__list-link-img">
+                     </a>
+                </li>
+                <li class="menu__list-item">
+                    <a [routerLink]="['/goal']" class="menu__list-link">
+                        Статистика
+                        <img src="assets/images/statistic.png" class="menu__list-link-img">
+                    </a>
+                </li>
+                <li class="menu__list-item">
+                    <a href="#" class="menu__list-link">
+                        Работа
+                        <img src="assets/images/work.png" class="menu__list-link-img">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="logout__container">
+            <button type="submit" class="logout__button btn"(click)="logOutFun()">Log Out</button>
+        </div>
+    </div>
+    <div class="main">
+        <div class="container">
+            <div class="main__inner">
+                <div class="main__left">
+                    <nav class="main__left-menu">
+                        <ul class="main__left-menu-list">
+                            <li class="main__left-menu-left-item" *ngFor="let subject of subjectList$ | async">
+                                <button (click)="chooseSubjectButton(subject)" class="main__left-menu-left-item-button">{{ subject }}</button>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="main__middle">
+                    <div class="main__middle__container">
+                        <div class="academ__goal">
+                            <canvas id="academDiagram" width="400px" height="300px"></canvas>
+                            <div class="academ__goal-info-container">
+                                <div class="academ__goal-info-item">
+                                    <span class="academ__goal-info-item-grade">{{ maxAcademGrade$ | async }}</span>
+                                    <span class="academ__goal-info-item-grade-divider"></span>
+                                    <span class="academ__goal-info-item-name">ЛБ</span>                              
+                                </div>
+                                <div class="academ__goal-info-item">
+                                    <span class="academ__goal-info-item-grade">{{ avgAcademGrade$ | async }}</span>
+                                    <span class="academ__goal-info-item-grade-divider"></span>
+                                    <span class="academ__goal-info-item-name">СБ</span>                              
+                                </div>
+                            </div>
+                        </div>
+                        <div class="practise__goal">
+                            <canvas id="practiseDiagram" width="400px" height="300px"></canvas>
+                            <div class="academ__goal-info-container">
+                                <div class="academ__goal-info-item">
+                                    <span class="academ__goal-info-item-grade">{{ maxPractiseGrade$ | async }}</span>
+                                    <span class="academ__goal-info-item-grade-divider"></span>
+                                    <span class="academ__goal-info-item-name">ЛБ</span>                              
+                                </div>
+                                <div class="academ__goal-info-item">
+                                    <span class="academ__goal-info-item-grade">{{ avgPractiseGrade$ | async }}</span>
+                                    <span class="academ__goal-info-item-grade-divider"></span>
+                                    <span class="academ__goal-info-item-name">СБ</span>                              
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+</body>
+</html>
