@@ -91,7 +91,18 @@ export class GoalComponent implements OnInit{
       options: {
         scales: {
           y: {
-            beginAtZero: true
+            beginAtZero: true,
+            title:{
+              display:true,
+              text:'Баллы'
+            }
+          },
+          x: {
+            beginAtZero: true,
+            title:{
+              display:true,
+              text:'Недели'
+            }
           }
         }
       }
@@ -131,7 +142,18 @@ export class GoalComponent implements OnInit{
       options: {
         scales: {
           y: {
-            beginAtZero: true
+            beginAtZero: true,
+            title:{
+              display:true,
+              text:'Баллы'
+            }
+          },
+          x: {
+            beginAtZero: true,
+            title:{
+              display:true,
+              text:'Недели'
+            }
           }
         }
       }
