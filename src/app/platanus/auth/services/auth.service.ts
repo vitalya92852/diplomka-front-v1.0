@@ -9,6 +9,7 @@ import { CurrentUserInterface } from '../shared/types/currentUser.interface'
 import { PersistanceService } from '../shared/services/persistance.service'
 import { Store } from '@ngrx/store'
 import { isLoggedInSelector } from '../store/auth.selector'
+import { RegistrationRequestInterface } from '../types/registrationRequestInterface'
 
 
 
@@ -22,6 +23,21 @@ export class AuthService {
   getUser(response: CurrentUserInterface): CurrentUserInterface {
     return response; 
   }
+
+  registration(data: RegistrationRequestInterface): Observable<CurrentUserInterface> {
+    const url = 'http://localhost:8080/registration';
+    return this.http.post<CurrentUserInterface>(url, {
+        login: data.user.username,
+        password:data.user.password,
+        confirmPassword:data.user.confirmPassword,
+        name:data.user.name,
+        lastname:data.user.lastname,
+        surname:data.user.surname,
+        group:data.user.group,
+        course:data.user.course
+    }
+      )
+  } 
 
   login(data: LoginRequestInterface): Observable<CurrentUserInterface> {
     const url = 'http://localhost:8080/login';
@@ -54,6 +70,11 @@ export class AuthService {
         observer.error('Токен отсутствует');
       });
     }
+  }
+
+  getStudentGroups(){
+    const url = 'http://localhost:8080/api/registration/getGroups';
+    return this.http.get<string[]>(url)
   }
 
 

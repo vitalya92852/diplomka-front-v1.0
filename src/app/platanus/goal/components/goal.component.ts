@@ -82,6 +82,7 @@ export class GoalComponent implements OnInit{
 
   getCurrentUser(){
     this.user$ = this.authService.getCurrentUser()
+    
   }
 
   
@@ -951,16 +952,17 @@ export class GoalComponent implements OnInit{
   //-------------------------------------------------------------- //
 
   //------------------Запрос оценки от студента------------------- //
-  requestGrade(grade: number) {
+  requestGrade() {
     
     this.authService.getCurrentUser().pipe(
       switchMap((user: CurrentUserInterface) => {
         const userId = user.id;
-        return this.goalService.postRequestGrade(grade, this.currentChooseSubject, userId);
+        let requestGrade
+        this.requestGrade$.subscribe(data=>{
+          requestGrade = data
+        })
+        return this.goalService.postRequestGrade(requestGrade, this.currentChooseSubject, userId);
       }),
-      tap(() => {
-        console.log("ok");
-      })
     ).subscribe(
       () => {
         this.showSuccesNotification = true;
@@ -991,7 +993,6 @@ export class GoalComponent implements OnInit{
     updateButtonAvailability(): void {
       this.authService.getCurrentUser().subscribe((user:CurrentUserInterface)=>{
         this.userId = user.id
-        console.log(this.selectedRequestGrade)
         this.avgAcademGrade$.subscribe(data=>{
           if(data<this.selectedRequestGrade){
             this.goalService.getRequestGrade(this.userId,this.selectedRequestGrade,this.currentChooseSubject).subscribe((grade:number)=>{
@@ -1022,6 +1023,7 @@ export class GoalComponent implements OnInit{
       body.classList.toggle('collapsed');
       
     }
+    
 
   //-------------------------------------------------------------- //
   

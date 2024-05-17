@@ -2,13 +2,15 @@ import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { TeacherService } from "../service/teacher.service";
-import { Observable, of } from "rxjs";
+import { Observable, of, switchMap } from "rxjs";
 import { AuthService } from "../../auth/services/auth.service";
 import { CurrentUserInterface } from "../../auth/shared/types/currentUser.interface";
 import { StudentInterface } from "../types/student.interface";
-import { Store } from "@ngrx/store";
+import { Store, select } from "@ngrx/store";
 import { logOutAction } from "../../auth/store/actions/logOut.action";
 import { Router } from "@angular/router";
+import { StudentRequestInterface } from "../types/studentRequest.interface";
+import { hasRoleSelector, isLoggedInSelector } from "../../auth/store/auth.selector";
 
 @Component({
     selector: 'platanus-login',
@@ -24,8 +26,15 @@ import { Router } from "@angular/router";
 
 export class TeacherComponent implements OnInit{
 
+    isLoggedIn$:Observable<boolean>;
+
     subjectList$:Observable<string[]>
     studentList$:Observable<StudentInterface[]>
+
+    selectedSubjectName:string
+
+    subjectRequestGradeList$:Observable<string[]>
+    studentRequestGradeList$:Observable<StudentRequestInterface[]>
 
     user$: Observable<CurrentUserInterface>
     
@@ -34,22 +43,15 @@ export class TeacherComponent implements OnInit{
     ngOnInit(): void {
         this.getSubjects()
         this.getCurrentUser()
-        // this.getStudents()
+        this.getRequestGradeSubjects()
+        this.initializeIsLoggedIn()
     }
 
     getCurrentUser(){
       this.user$ = this.authService.getCurrentUser()
     }
 
-    // getStudents(){
-    //   this.authService.getCurrentUser().subscribe((user: CurrentUserInterface) => {
-    //     this.teacherService.getStudents(user.id).subscribe((students: StudentInterface[]) => {
-    //       console.log(students); // Выводим список студентов в консоль
-    //       this.studentList$ = of(students); // Присваиваем список студентов переменной studentList$
-    //     });
-    //   });
-      
-    // }
+
 
     selectedSubject(value: Event){
       const target = event.target as HTMLSelectElement;
@@ -69,7 +71,7 @@ export class TeacherComponent implements OnInit{
     }
 
     logOutFun():void{
-      console.log('asdads')
+
       this.store.dispatch(logOutAction())
       this.router.navigate(['/login']);
     }
@@ -99,5 +101,96 @@ export class TeacherComponent implements OnInit{
       }
 
     }
+
+    getRequestGradeSubjects(){
+      this.authService.getCurrentUser().subscribe((user:CurrentUserInterface)=>{
+        this.subjectRequestGradeList$= this.teacherService.getRequestGradeSubjects(user.id)
+      })
+    }
+
+    selectedRequestGradeSubject(value: Event){
+      const target = event.target as HTMLSelectElement;
+      this.selectedSubjectName = target.value;
+      this.authService.getCurrentUser().subscribe((user: CurrentUserInterface) => {
+        this.teacherService.getStudentsRequest(user.id,this.selectedSubjectName).subscribe((students: StudentRequestInterface[]) => {
+          console.log(students); 
+          this.studentRequestGradeList$ = of(students); 
+        });
+      });
+    }
+
+    rejectRequest(studentId:number,requestGrade:number,){
+      this.authService.getCurrentUser().pipe(
+        switchMap((user:CurrentUserInterface) => {
+          const userId = user.id;
+          return this.teacherService.rejectRequest(userId,requestGrade,studentId,this.selectedSubjectName);
+        })
+      ).subscribe(
+        ()=>{
+          console.log('Запрос на оценку отклонен');
+          this.authService.getCurrentUser().subscribe((user: CurrentUserInterface) => {
+            this.teacherService.getStudentsRequest(user.id,this.selectedSubjectName).subscribe((students: StudentRequestInterface[]) => {
+              this.studentRequestGradeList$ = of(students); 
+            });
+          });
+        },
+        (error) => {
+          console.error('Ошибка при отправке запроса:', error);
+        }
+      );
+    }
+    
+    
+
+    acceptRequest(studentId:number,requestGrade:number){
+      this.authService.getCurrentUser().pipe(
+        switchMap((user:CurrentUserInterface) => {
+          const userId = user.id;
+          return this.teacherService.acceptRequest(userId,requestGrade,studentId,this.selectedSubjectName);
+        })
+      ).subscribe(
+        ()=>{
+          console.log('Запрос на оценку принят');
+          this.authService.getCurrentUser().subscribe((user: CurrentUserInterface) => {
+            this.teacherService.getStudentsRequest(user.id,this.selectedSubjectName).subscribe((students: StudentRequestInterface[]) => {
+              console.log(students); 
+              this.studentRequestGradeList$ = of(students); 
+            });
+          });
+        },
+        (error) => {
+          console.error('Ошибка при отправке запроса:', error);
+        }
+      );
+    }
+
+
+    initializeIsLoggedIn() {
+      this.isLoggedIn$ = this.store.pipe(select(isLoggedInSelector));
+    
+      this.store.pipe(select(isLoggedInSelector)).subscribe(isLoggedIn => {
+          if (isLoggedIn === null) {
+              return; 
+          }
+        
+          if (!isLoggedIn) {
+              this.router.navigate(['/login']);
+          } else{
+            this.store.pipe(select(hasRoleSelector)).subscribe(role => {
+              if (!Array.isArray(role)) {
+                  if (role !== "ROLE_TEACHER") {
+                      this.router.navigate(['']);
+                  } else {
+                      // Действия при совпадении
+                  }
+              } else if (!role.includes("ROLE_TEACHER")) {
+                  this.router.navigate(['']);
+              }
+          });
+          }
+      });
+    }
+
+    
     
 }

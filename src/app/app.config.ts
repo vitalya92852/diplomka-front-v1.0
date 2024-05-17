@@ -13,6 +13,7 @@ import { getCurrentUserEffect } from './platanus/auth/store/effects/getCurrentUs
 
 import { loadinterceptor } from './platanus/auth/shared/services/authintercepter.service';
 import { LogOutEffect } from './platanus/auth/store/effects/logOut.effect';
+import { RegistrationEffect } from './platanus/auth/store/effects/registration.effect';
 
 
 
@@ -36,7 +37,7 @@ export const appConfig: ApplicationConfig = {
       LoginEffect,
       getCurrentUserEffect,
       LogOutEffect,
-      // GetGoalDataEffect
+      RegistrationEffect
     ),
 
     provideStoreDevtools({

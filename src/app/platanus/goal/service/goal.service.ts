@@ -69,6 +69,7 @@ export class GoalService{
             subjectName: currentSubject,
             userId: userId
           };
+          console.log(data.grade)
         return this.http.post(url, data);
     }
 

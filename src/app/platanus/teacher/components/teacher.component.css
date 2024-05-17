@@ -257,7 +257,7 @@ body {
   }
   
   .scroll {
-    max-height: 500px;
+    height: 100%;
     overflow-y: auto;
     scrollbar-width: thin;
     overflow-x: hidden;
@@ -590,4 +590,10 @@ body {
       opacity: 1;
       width: 100%;
     }
+  }
+
+  .request-button-box{
+    display: flex;
+    gap: 0.5rem;
+    
   }

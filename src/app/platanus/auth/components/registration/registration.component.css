@@ -1,0 +1,141 @@
+html{
+    box-sizing: border-box;
+}
+
+*,*::after,*::after,*::before{
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+
+
+ul{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e9faff;
+    height: 100vh;
+    margin: -8px;
+}
+
+
+.container{
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+
+
+
+
+
+.main {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    width: 100%;
+
+}
+
+.main__container{
+    background-color: white;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+.registration-form-name{
+    padding-bottom: 30px;
+    /* padding-top: 30px; */
+    font-family: 'Maven Pro', sans-serif;
+}
+
+.registration-form {
+    text-align: center;
+    width: 300px;
+}
+
+.registration-form h2 {
+    font-size: 24px;
+    margin-top: 0;
+}
+.registration-form select{
+    font-family: 'Maven Pro', sans-serif;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.registration-form input[type="text"],
+.registration-form input[type="password"],
+.registration-form input[type="email"],
+.registration-form input[type="number"],
+.registration-form button {
+    font-family: 'Maven Pro', sans-serif;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+    padding: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.registration-form button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #5DA8FF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.5s ease;
+}
+
+.registration-form button:hover {
+    transition: all 0.5s ease;
+    background-color: #428fe7;
+}
+
+.login-text {
+    color: blue; /* Синий цвет текста */
+    font-size: 18px; /* Размер шрифта */
+    margin-top: 20px; /* Отступ сверху */
+    font-family: 'Maven Pro', sans-serif;
+}
+
+.back-end-error{
+    color: red;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: 'Maven Pro', sans-serif;
+}

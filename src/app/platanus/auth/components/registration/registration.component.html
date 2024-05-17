@@ -1,0 +1,35 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
+<body>
+    <div class="wrapper">
+        <div class="main">
+            <div class="main__container">
+                <div class="registration-form">
+                    <h2 class ="registration-form-name">Registration</h2>
+                    <p class="back-end-error" *ngIf="(validError$ | async)">
+                        <span>{{validError$ | async}}</span>
+                    </p>
+                    <form form [formGroup]="form" (ngSubmit)="onSubmit()">
+                        <input type="text" name="username" placeholder="Username" formControlName="username" required>
+                        <input type="password" name="password" placeholder="Password" formControlName="password" required>
+                        <input type="password" name="confirmPassword" placeholder="Confirm Password" formControlName="confirmPassword" required>
+                        <input type="text" name="name" placeholder="Name" formControlName="name" required>
+                        <input type="text" name="lastname" placeholder="Lastname" formControlName="lastname" required>
+                        <input type="text" name="surname" placeholder="Surname" formControlName="surname" required>
+                        <select (change)="onGroupChange($event)">
+                            <option value="" disabled selected>Выберите группу</option> 
+                            <option *ngFor="let group of studentGroups" [value]="group">{{ group }}</option>
+                        </select>
+                          
+                          
+                        <input type="number" name="course" placeholder="Course" formControlName="course" required>
+                        <button type="submit" [disabled]="isSubmitting$ | async">Register</button>
+                    </form>
+                    <a class="login-text" [routerLink]="['/login']">Уже есть аккаунт?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

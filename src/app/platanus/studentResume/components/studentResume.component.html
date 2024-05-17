@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sidebar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap" rel="stylesheet">
+  </head>
+
+  <!-- Уведомление то что пользователь уже отправлял подобный запрос -->
+  <div class="notification-container" *ngIf="showBadNotification">
+    <div class="notification-bad">
+      <p>Вы не выбрали файл</p>
+    </div>
+  </div>
+  <!-- Успешная отправка запроса на оценку -->
+  <div class="notification-container" *ngIf="showSuccesNotification">
+    <div class="notification-succes">
+      <p>Файл успешно отправлен</p>
+    </div>
+  </div>
+  
+  <body class="body modal-open">
+    <div class="container">
+      <nav class="sidebar">
+        <div class="sidebar-top-wrapper">
+          <div class="sidebar-top">
+            <a href="#" class="logo__wrapper">
+              <img src="assets/images/logo.svg" alt="Logo" class="logo-small" />
+              <span class="hide company-name"> PLATANUS </span>
+            </a>
+          </div>
+          <button class="expand-btn" type="button" (click)="toggleCollapsed()">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.00979 2.72L10.3565 7.06667C10.8698 7.58 10.8698 8.42 10.3565 8.93333L6.00979 13.28"
+                stroke-width="1.5"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="sidebar-links-wrapper">
+          <div class="sidebar-links scroll">
+            <ul>
+              <li>
+                <a href="goal" title="Академ.прогресс" class="tooltip">
+                  <svg
+                    width="22"
+                    height="23"
+                    viewBox="0 0 22 23"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1.82764 11.8634C1.82764 8.49248 1.82764 6.80699 2.57126 5.61223C2.84639 5.17021 3.18813 4.78574 3.58105 4.47623C4.64306 3.63965 6.14126 3.63965 9.13767 3.63965H12.7927C15.7891 3.63965 17.2873 3.63965 18.3493 4.47623C18.7422 4.78574 19.084 5.17021 19.3591 5.61223C20.1027 6.80699 20.1027 8.49248 20.1027 11.8634C20.1027 15.2344 20.1027 16.9199 19.3591 18.1146C19.084 18.5567 18.7422 18.9411 18.3493 19.2506C17.2873 20.0872 15.7891 20.0872 12.7927 20.0872H9.13767C6.14126 20.0872 4.64306 20.0872 3.58105 19.2506C3.18813 18.9411 2.84639 18.5567 2.57126 18.1146C1.82764 16.9199 1.82764 15.2344 1.82764 11.8634Z"
+                      stroke="#141B34"
+                      stroke-width="1.4"
+                    />
+                    <path
+                      d="M8.68066 3.63965L8.68066 20.0872"
+                      stroke="#141B34"
+                      stroke-width="1.4"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M4.56885 7.29492H5.4826M4.56885 10.0362H5.4826"
+                      stroke="#141B34"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span class="link hide">Академ.прогресс</span>
+                  <div class="tag hide">Новое</div>
+                </a>
+              </li>
+              <li>
+                <a href="#work" title="Связь с работадателем" class="tooltip">
+                  <svg
+                    width="22"
+                    height="23"
+                    viewBox="0 0 22 23"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2.74121 10.7832L2.8809 13.7318C3.031 16.8766 3.10604 18.449 4.16561 19.4133C5.22519 20.3776 6.87792 20.3776 10.1834 20.3776H11.7466C15.0521 20.3776 16.7048 20.3776 17.7644 19.4133C18.824 18.449 18.899 16.8766 19.0491 13.7318L19.1888 10.7832"
+                      stroke="#141B34"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M2.60142 10.2747C4.15416 13.2274 7.65632 14.4386 10.9648 14.4386C14.2734 14.4386 17.7755 13.2274 19.3283 10.2747C20.0695 8.86524 19.5082 6.21484 17.6828 6.21484H4.24693C2.42146 6.21484 1.86022 8.86524 2.60142 10.2747Z"
+                      stroke="#141B34"
+                      stroke-width="1.4"
+                    />
+                    <path
+                      d="M10.9648 10.7832H10.9731"
+                      stroke="#141B34"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M14.6196 6.21474L14.5389 5.93233C14.1369 4.52511 13.9358 3.8215 13.4572 3.41905C12.9786 3.0166 12.3429 3.0166 11.0715 3.0166H10.8577C9.58627 3.0166 8.95056 3.0166 8.47196 3.41905C7.99335 3.8215 7.79232 4.52511 7.39026 5.93233L7.30957 6.21474"
+                      stroke="#141B34"
+                      stroke-width="1.4"
+                    />
+                  </svg>
+                  <span class="link hide">Связь с работадателем</span>
+                  <div class="tag hide">Новое</div>
+                </a>
+              </li>
+              <li>
+                <a href="aim" title="Цели" class="tooltip" >
+                  <svg
+                    width="22"
+                    height="23"
+                    viewBox="0 0 22 23"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11.8789 14.5088C9.78491 19.9913 3.92166 14.5088 1.82764 19.9913"
+                      stroke="#141B34"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M14.1636 14.509H15.5354C17.6891 14.509 18.766 14.509 19.4351 13.8399C20.1041 13.1708 20.1041 12.094 20.1041 9.94022V8.11272C20.1041 5.95898 20.1041 4.88211 19.4351 4.21303C18.766 3.54395 17.6891 3.54395 15.5354 3.54395L11.8804 3.54395C9.72661 3.54395 8.64974 3.54395 7.98066 4.21303C7.41376 4.77993 7.32719 5.63958 7.31396 7.19896"
+                      stroke="#141B34"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <ellipse
+                      cx="6.85323"
+                      cy="12.2248"
+                      rx="2.28439"
+                      ry="2.28439"
+                      stroke="#141B34"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M10.9653 7.19922L16.4479 7.19922M16.4479 10.8542L13.7066 10.8542"
+                      stroke="#141B34"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span class="link hide">Цели</span>
+                  <div class="tag hide">Новое</div>
+                </a>
+              </li>
+            </ul>
+            <h2>Основной раздел</h2>
+            <div class="divider"></div>
+            <ul>
+              <li>
+                <a href="#main" title="Главная" class="tooltip">
+                  <svg
+                    width="22"
+                    height="23"
+                    viewBox="0 0 22 23"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_15_5297)">
+                      <path
+                        d="M18.9821 17.2756C19.6667 17.2756 20.2113 16.8447 20.7003 16.2423C21.7013 15.009 20.0578 14.0234 19.431 13.5407C18.7938 13.05 18.0824 12.7721 17.361 12.7068M16.4473 10.8793C17.7089 10.8793 18.7317 9.85656 18.7317 8.59493C18.7317 7.3333 17.7089 6.31055 16.4473 6.31055"
+                        stroke="#141B34"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                      />
+                      <path
+                        d="M2.94755 17.2756C2.26287 17.2756 1.71829 16.8447 1.22932 16.2423C0.22834 15.009 1.8718 14.0234 2.49861 13.5407C3.1358 13.05 3.84726 12.7721 4.56859 12.7068M5.02547 10.8793C3.76384 10.8793 2.74108 9.85656 2.74108 8.59493C2.74108 7.3333 3.76384 6.31055 5.02547 6.31055"
+                        stroke="#141B34"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                      />
+                      <path
+                        d="M7.38635 14.6364C6.4527 15.2138 4.00471 16.3926 5.4957 17.8677C6.22403 18.5883 7.03521 19.1036 8.05506 19.1036H13.8745C14.8944 19.1036 15.7056 18.5883 16.4339 17.8677C17.9249 16.3926 15.4769 15.2138 14.5432 14.6364C12.3538 13.2826 9.57576 13.2826 7.38635 14.6364Z"
+                        stroke="#141B34"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M14.1629 7.68154C14.1629 9.44782 12.731 10.8797 10.9647 10.8797C9.19846 10.8797 7.7666 9.44782 7.7666 7.68154C7.7666 5.91525 9.19846 4.4834 10.9647 4.4834C12.731 4.4834 14.1629 5.91525 14.1629 7.68154Z"
+                        stroke="#141B34"
+                        stroke-width="1.4"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_15_5297">
+                        <rect
+                          width="21.9301"
+                          height="21.9301"
+                          fill="white"
+                          transform="translate(0 0.828125)"
+                        />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  <span class="link hide">Главная</span>
+                </a>
+              </li>
+              <li>
+                <a href="#aim" title="Цели" class="tooltip">
+                  <svg
+                    width="22"
+                    height="23"
+                    viewBox="0 0 22 23"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11.8789 14.5088C9.78491 19.9913 3.92166 14.5088 1.82764 19.9913"
+                      stroke="#141B34"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M14.1636 14.509H15.5354C17.6891 14.509 18.766 14.509 19.4351 13.8399C20.1041 13.1708 20.1041 12.094 20.1041 9.94022V8.11272C20.1041 5.95898 20.1041 4.88211 19.4351 4.21303C18.766 3.54395 17.6891 3.54395 15.5354 3.54395L11.8804 3.54395C9.72661 3.54395 8.64974 3.54395 7.98066 4.21303C7.41376 4.77993 7.32719 5.63958 7.31396 7.19896"
+                      stroke="#141B34"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <ellipse
+                      cx="6.85323"
+                      cy="12.2248"
+                      rx="2.28439"
+                      ry="2.28439"
+                      stroke="#141B34"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M10.9653 7.19922L16.4479 7.19922M16.4479 10.8542L13.7066 10.8542"
+                      stroke="#141B34"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span class="link hide">Создать цель</span>
+                </a>
+              </li>
+              <li >
+                <a href="#work" title="Работа" class="tooltip" style="background-color: #f5f5f5;">
+                  <svg
+                    width="22"
+                    height="23"
+                    viewBox="0 0 22 23"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2.74121 10.7832L2.8809 13.7318C3.031 16.8766 3.10604 18.449 4.16561 19.4133C5.22519 20.3776 6.87792 20.3776 10.1834 20.3776H11.7466C15.0521 20.3776 16.7048 20.3776 17.7644 19.4133C18.824 18.449 18.899 16.8766 19.0491 13.7318L19.1888 10.7832"
+                      stroke="#141B34"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M2.60142 10.2747C4.15416 13.2274 7.65632 14.4386 10.9648 14.4386C14.2734 14.4386 17.7755 13.2274 19.3283 10.2747C20.0695 8.86524 19.5082 6.21484 17.6828 6.21484H4.24693C2.42146 6.21484 1.86022 8.86524 2.60142 10.2747Z"
+                      stroke="#141B34"
+                      stroke-width="1.4"
+                    />
+                    <path
+                      d="M10.9648 10.7832H10.9731"
+                      stroke="#141B34"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M14.6196 6.21474L14.5389 5.93233C14.1369 4.52511 13.9358 3.8215 13.4572 3.41905C12.9786 3.0166 12.3429 3.0166 11.0715 3.0166H10.8577C9.58627 3.0166 8.95056 3.0166 8.47196 3.41905C7.99335 3.8215 7.79232 4.52511 7.39026 5.93233L7.30957 6.21474"
+                      stroke="#141B34"
+                      stroke-width="1.4"
+                    />
+                  </svg>
+                  <span class="link hide" >Создать резюме</span>
+                </a>
+              </li>
+            </ul>
+            <h2>IT-профессии</h2>
+            <div class="divider"></div>
+            <ul>
+              <li>
+                <a href="#front-end" title="Front-end" class="tooltip">
+                  <img
+                    src="assets/images/front.svg"
+                    width="25"
+                    height="26"
+                    alt="Front-end"
+                  />
+                  <span class="link hide">Front-end</span>
+                  
+                </a>
+              </li>
+              <li>
+                <a href="#back-end" title="Back-end" class="tooltip">
+                  <img
+                    src="assets/images/back.svg"
+                    width="25"
+                    height="26"
+                    alt="Back-end"
+                  />
+
+                  <span class="link hide">Back-end</span>
+                </a>
+              </li>
+              <li>
+                <a href="#full-stack" title="Full-stack" class="tooltip">
+                  <img
+                    src="assets/images/full.svg"
+                    width="25"
+                    height="26"
+                    alt="Full-stack"
+                  />
+                  <span class="link hide">Full-stack</span>
+                </a>
+              </li>
+              <li>
+                <a href="#data-science" title="Data-science" class="tooltip">
+                  <img
+                    src="assets/images/data.svg"
+                    width="25"
+                    height="26"
+                    alt="Data-science"
+                  />
+                  <span class="link hide">Data-Science</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#machine-learning"
+                  title="Машинное обучение"
+                  class="tooltip"
+                >
+                  <img
+                    src="assets/images/learning.svg"
+                    width="25"
+                    height="26"
+                    alt="Machine learning"
+                  />
+                  <span class="link hide">Machine Learning</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="#support" title="Поддержка" class="tooltip">
+                  <svg
+                    width="22"
+                    height="23"
+                    viewBox="0 0 22 23"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M20.1027 10.7875C20.1027 15.615 16.0111 19.5292 10.9652 19.5292C10.3719 19.5299 9.78026 19.4751 9.19744 19.3656C8.77795 19.2868 8.5682 19.2474 8.42177 19.2698C8.27534 19.2922 8.06783 19.4025 7.65281 19.6232C6.47877 20.2476 5.1098 20.4681 3.79322 20.2232C4.29362 19.6077 4.63537 18.8692 4.78617 18.0775C4.87754 17.5933 4.65114 17.1228 4.31203 16.7785C2.77185 15.2145 1.82764 13.107 1.82764 10.7875C1.82764 5.96003 5.91923 2.0459 10.9652 2.0459C16.0111 2.0459 20.1027 5.96003 20.1027 10.7875Z"
+                      stroke="#141B34"
+                      stroke-width="1.4"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M10.961 11.1836H10.9692M14.6119 11.1836H14.6201M7.31006 11.1836H7.31826"
+                      stroke="#141B34"
+                      stroke-width="1.69"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span class="link hide">Поддержка</span>
+                  <div class="tag hide">Бета</div>
+                </a>
+              </li>
+            </ul>
+            <div class="divider"></div>
+          </div>
+        </div>
+        <div class="sidebar__profile">
+          <div class="avatar__wrapper">
+            <img class="avatar" src="assets/images/profile.png" alt="Profile Avatar" />
+            <div class="online__status"></div>
+          </div>
+          <div class="avatar__name hide">
+            <div class="user-name" *ngIf="user$ | async as user">{{user.name}}</div>
+            <div class="tag hide">Студент</div>
+          </div>
+          <div class="logout__btn hide">
+            <a 
+              ><img (click)="logOutFun()" src="assets/images/logout.png" alt="Выйти" width="22" height="22"
+            /></a>
+          </div>
+        </div>
+      </nav>
+      <div class="content">
+        <div class="content__wrapper">
+          <div class="faq-container">
+            <form [formGroup]="form" (ngSubmit)="createResume()">
+              <details>
+                <summary>
+                  <span class="faq-title">ФИО</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="expand-icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M9 6l6 6l-6 6"></path>
+                  </svg>
+                </summary>
+                <div class="faq-content" *ngIf="student$ | async as student">{{student.name}} {{student.lastname}} {{student.surname}}</div>
+              </details>
+              <details>
+                <summary>
+                  <span class="faq-title">Контактная информация (телефон, электронная почта и т. д.)</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="expand-icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M9 6l6 6l-6 6"></path>
+                  </svg>
+                </summary>
+                <div class="faq-content">
+                  <input type="text" class="user__text" formControlName="contactInfo">
+                </div>
+                <div class="errorField" *ngIf="form.get('contactInfo').hasError('required') && form.get('contactInfo').touched">Обязательное поле</div>
+              </details>
+              <details>
+                <summary>
+                  <span class="faq-title">Адрес</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="expand-icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M9 6l6 6l-6 6"></path>
+                  </svg>
+                </summary>
+                <div class="faq-content">
+                  <input type="text" class="user__text" formControlName="address">
+                </div>
+                <div class="errorField" *ngIf="form.get('address').hasError('required') && form.get('address').touched">Обязательное поле</div>
+              </details>
+              <p style="color: #fff; margin: 1rem 0; ">Выберите позицию на которую Вы претендуете</p>
+              <div class="form-group">
+                <div class="select-wrapper">
+                    <select name="select-category" id="" class="select" [(ngModel)]="selectedProfession" [ngModelOptions]="{standalone: true}"(change)="onPositionChange($event)" required>
+                        <option value="Стажер">Стажер</option>
+                        <option value="Джуниор разработчик">Джуниор разработчик</option>
+                        <option value="Миддл разработчик">Миддл разработчик</option>
+                        <option value="Сеньор разработчик">Сеньор разработчик</option>
+                    </select>
+                </div>
+              </div>
+              <p style="color: #fff; margin: 1rem 0;">Уровень образования</p>
+              <div class="form-group">
+                <div class="select-wrapper">
+                    <select name="select-category" id="" class="select" [(ngModel)]="selectedStudy" [ngModelOptions]="{standalone: true}" (change)="onStudyChange($event)" required>
+                        <option value="Бакалавр">Бакалавр</option>
+                        <option value="Магистратура">Магистратура</option>
+                        <option value="Аспирантура">Аспирантура</option>
+                        <option value="Ординатура">Ординатура</option>
+                    </select>
+                </div>
+              </div>
+              <details>
+                <summary>
+                  <span class="faq-title">Название учебного заведения</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="expand-icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M9 6l6 6l-6 6"></path>
+                  </svg>
+                </summary>
+                <div class="faq-content">
+                  <div class="university-name">КазАТУ</div>
+                </div>
+                <div class="errorField" *ngIf="form.get('education').hasError('required') && form.get('education').touched">Обязательное поле</div>
+              </details>
+              <details>
+                <summary>
+                  <span class="faq-title">Специализация (направление)</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="expand-icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M9 6l6 6l-6 6"></path>
+                  </svg>
+                </summary>
+                <div class="faq-content">
+                  <input type="text" class="user__text" formControlName="specialization">
+                </div>
+                <div class="errorField" *ngIf="form.get('specialization').hasError('required') && form.get('specialization').touched">Обязательное поле</div>
+              </details>
+              <details>
+                <summary>
+                  <span class="faq-title">Год окончания (ожидаемый или фактический)</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="expand-icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M9 6l6 6l-6 6"></path>
+                  </svg>
+                </summary>
+                <div class="faq-content">
+                  <input type="text" class="user__text" formControlName="yearsOfEducation">
+                </div>
+                <div class="errorField" *ngIf="form.get('yearsOfEducation').hasError('required') && form.get('yearsOfEducation').touched">Обязательное поле</div>
+              </details>
+              <details>
+                <summary>
+                  <span class="faq-title">Опыт работы (если есть)</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="expand-icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M9 6l6 6l-6 6"></path>
+                  </svg>
+                </summary>
+                <div class="faq-content">
+                  <span class="faq-title">Название организации</span>
+                  <input type="text" class="user__text" formControlName="nameOfOrganization">
+                  <span class="faq-title">Должность</span>
+                  <input type="text" class="user__text" formControlName="position">
+                  <span class="faq-title">Сроки работы (начало и конец)</span>
+                  <input type="text" class="user__text" formControlName="deadLine">
+                  <span class="faq-title">Основные обязанности и достижения</span>
+                  <input type="text" class="user__text" formControlName="achievement">
+                  </div>
+              </details>
+              <details>
+                <summary>
+                  <span class="faq-title">Навыки и умения</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="expand-icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M9 6l6 6l-6 6"></path>
+                  </svg>
+                </summary>
+                <div class="faq-content">
+                  <p style="color: #fff">Распишите ваши навыки (например: знание языков программирования и т.д)</p>
+                  <input type="text" class="user__text" formControlName="skills">
+                </div>
+                <div class="errorField" *ngIf="form.get('skills').hasError('required') && form.get('skills').touched">Обязательное поле</div>
+              </details>
+              <details>
+                <summary>
+                  <span class="faq-title">Дополнительная информация</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="expand-icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M9 6l6 6l-6 6"></path>
+                  </svg>
+                </summary>
+                <div class="faq-content">
+                  <span class="faq-title">Языки (владение иностранными языками)</span>
+                  <input type="text" class="user__text" formControlName="additionallyInfo" required>
+                  
+                  <span class="faq-title">Другое</span>
+                  <input type="text" class="user__text" formControlName="otherInfo" required>
+                </div>
+              </details>
+              <div class="button-submit-box">
+                <button class="submit-button" id="submit-button" type="submit" [disabled]="form.invalid" [ngStyle]="{'background-color': form.invalid ? 'red' : 'green'}">Загрузить</button>
+              </div>
+            </form>
+          </div>
+          <div class="main__content" style="margin-left: 1rem;"> 
+            <form class="dropzone-box">
+              <h2>Есть готовое резюме?</h2>
+              <p>Прикрепите файл вашего готового резюме</p>
+              <div class="dropzone-area" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
+                <div class="file-upload-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                      <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                  </svg>
+                </div>
+                <p>Кликните, чтобы загрузить файл или зажмите файл и перетащите его в это поле</p>
+                <input type="file" required id="upload-file" name="uploaded-file" (change)="onFileSelected($event)">
+                <p class="message">{{ selectedFile ? selectedFile.name + ', ' + selectedFile.size + ' байт(ов)' : 'Нет загруженных файлов' }}</p>
+              </div>
+              <div *ngIf="fileNotUploded" class="no-file-message" style="color: red; padding-top: 1rem;">
+                Никакой файл не был загружен.
+              </div>
+              <div class="dropzone-actions">
+                <button type="reset" (click)="onReset()">
+                  Отмена
+                </button>
+                <button type="button" id="submit-button" (click)="uploadFile()" [disabled]="isButtonDisabled">
+                  Загрузить
+                </button>
+              </div>
+            </form>
+          </div>
+          
+        </div>
+    </div>
+    
+
+    </div>
+    
+    </body>
+
+</html>

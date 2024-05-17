@@ -5,6 +5,7 @@ import { loginAction, loginFailureAction, loginSuccessAction } from './actions/l
 import { getCurrentUserAction, getCurrentUserFailureAction, getCurrentUserSuccessAction } from './actions/getCurrentUser.action';
 import { logOutAction, logOutActionSuccess } from './actions/logOut.action';
 import { HttpErrorResponse } from '@angular/common/http';
+import { registrationActionFailure } from './actions/registration.action';
 
 
 
@@ -78,6 +79,13 @@ export const authReducer = createReducer(
       currentUser:null,
     })
   ),
+
+  on(
+    registrationActionFailure,
+     (state, { error }):AuthStateInterface => ({
+    ...state,
+    validationError: extractErrorMessage(error)
+  }))
 )
 
 function extractErrorMessage(error: any): string {

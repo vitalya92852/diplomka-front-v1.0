@@ -106,7 +106,7 @@
   }
   
   .scroll {
-    max-height: 500px;
+    height: 100%;
     overflow-y: auto;
     scrollbar-width: thin;
     overflow-x: hidden;
@@ -188,7 +188,6 @@
   /*? menu links */
   
   .sidebar-links-wrapper {
-    /* overflow-y: auto; */
     overflow: hidden;
     padding: 1rem;
     position: relative;
@@ -373,7 +372,13 @@
   .logout__btn .hide {
     position: absolute;
     visibility: hidden;
+    
   }
+
+  .logout{
+    cursor: pointer;
+}
+
   
   body.collapsed .expand-btn svg {
     transform: rotate(-360deg);

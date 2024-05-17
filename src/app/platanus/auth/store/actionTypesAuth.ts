@@ -9,5 +9,9 @@ export enum ActionTypesAuth {
 
   USER_LOG_OUT = '[Auth] Log out user',
   USER_LOG_OUT_SUCCESS = '[Auth] Log out success',
-  USER_LOG_OUT_FAILURE = '[Auth] Log out failure'
+  USER_LOG_OUT_FAILURE = '[Auth] Log out failure',
+
+  REGISTRATION = '[Auth] Registration user',
+  REGISTRATION_SUCCESS = '[Auth] Registration user success',
+  REGISTRATION_FAILURE = '[Auth] Registration user failure',
 }

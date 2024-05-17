@@ -31,4 +31,21 @@
     --background: #F8F8FF;
     --error: #e5484d;
 
+      /*Accordion*/
+    --white: #FFF;
+    --background: #060D23;
+    --background-hover: #383D4F;
+    --primary-blue: #408cf9;
+    --blue-gray: #f4fcff;
+    /*Aims*/
+    /* --background: #EDEEF7; */
+    --gray: #EDEEF7;
+    --white: #FCFCFC;
+    --green: #4ba61d;
+    --red: #e74c3c;
+    --background-widget: #060D23;
+    --stock-background: #383D4F;
+    --gray-dark: #3e3e3e;
+    --table-background: #FFF;
+
   }
