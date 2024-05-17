@@ -7,13 +7,10 @@ import { LoginRequestInterface } from "../../types/loginRequest.interface"
 
 
 
-
-
-import { AppStateInterface } from "../../shared/types/appState.interface"
 import { Route, Router } from "@angular/router"
 import { loginAction } from "../../store/actions/login.action"
-import { logOutAction } from "../../store/actions/logOut.action"
-import { isLoggedInSelector } from "../../store/auth.selector"
+
+import { isLoggedInSelector, validationError } from "../../store/auth.selector"
 
 
 
@@ -34,13 +31,14 @@ export class LoginComponent implements OnInit {
   form: FormGroup
   isSubmitting$: Observable<boolean>
   isLoggedIn$:Observable<boolean>
+  validError$: Observable<String>
 
   constructor(private fb: FormBuilder, private store: Store,private router:Router) {}
 
   ngOnInit(): void {
     this.initializeForm();
     this.initializeIsLoggedIn();
-
+    this.validData()
 
   }
 
@@ -69,6 +67,11 @@ export class LoginComponent implements OnInit {
       user: this.form.value
     }
     this.store.dispatch(loginAction({request}))
+
+  }
+
+  validData(){
+    this.validError$ = this.store.select(validationError);
   }
 
 

@@ -4,6 +4,7 @@ import { AuthStateInterface } from '../types/authState.interface'
 import { loginAction, loginFailureAction, loginSuccessAction } from './actions/login.action'
 import { getCurrentUserAction, getCurrentUserFailureAction, getCurrentUserSuccessAction } from './actions/getCurrentUser.action';
 import { logOutAction, logOutActionSuccess } from './actions/logOut.action';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 
@@ -11,7 +12,8 @@ const initialState: AuthStateInterface = {
   isSubmitting: false,
   isLoading:false,
   currentUser: null,
-  isLoggedIn: null
+  isLoggedIn: null,
+  validationError:null
 }
 
 export const AUTH_FEATURE_KEY = 'auth';
@@ -36,9 +38,10 @@ export const authReducer = createReducer(
   ),
   on(
     loginFailureAction,
-    (state): AuthStateInterface => ({
+    (state,{error}): AuthStateInterface => ({
       ...state,
-      isSubmitting: false,
+      validationError: extractErrorMessage(error)
+      
     })
   ),
   on(
@@ -77,4 +80,13 @@ export const authReducer = createReducer(
   ),
 )
 
-
+function extractErrorMessage(error: any): string {
+  // Проверяем, является ли ошибка объектом HttpErrorResponse
+  if (error instanceof HttpErrorResponse) {
+    // Если да, возвращаем сообщение об ошибке
+    return error.error;
+  } else {
+    // Если это не HttpErrorResponse, возвращаем сообщение об ошибке как есть
+    return error;
+  }
+}

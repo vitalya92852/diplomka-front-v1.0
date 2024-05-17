@@ -1,78 +1,18 @@
-<!-- <!-- <div class="auth-page">
-  <div class="container page">
-    <div class="row">
-      <div class="col-md-6 offset-md-3 col-xs-12">
-        <h1 class="text-xs-center">Sign In</h1>
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
-          <fieldset>
-            <fieldset class="form-group">
-              <input
-                type="text"
-                class="form-control form-control-lg"
-                placeholder="username"
-                formControlName="username"
-              />
-            </fieldset>
-            <fieldset class="form-group">
-              <input
-                type="password"
-                class="form-control form-control-lg"
-                placeholder="Password"
-                formControlName="password"
-              />
-            </fieldset>
-            <button
-              class="btn btn-lg btn-primary pull-xs-right"
-              type="submit"
-              [disabled]="isSubmitting$ | async"
-            >
-              Sign in
-            </button>
-          </fieldset>
-        </form>
-      </div>
-    </div>
-  </div>
-</div> -->
+<!-- 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
 <body>
     <div class="wrapper">
-        <div class="header">
-              <div class="header__inner">
-                <div class="logo">
-                    <img src="assets/images/logo.png" alt="" class="logo__img">
-                </div>
-                <nav class="menu">
-                    <ul class="menu__list">
-                        <li class="menu__list-item">
-                            <a href="#" class="menu__list-link">
-                                Цель
-                                <img src="assets/images/goal.png" class="menu__list-link-img">
-                             </a>
-                        </li>
-                        <li class="menu__list-item">
-                            <a href="#" class="menu__list-link">
-                                Статистика
-                                <img src="assets/images/statistic.png" class="menu__list-link-img">
-                            </a>
-                        </li>
-                        <li class="menu__list-item">
-                            <a href="#" class="menu__list-link">
-                                Работа
-                                <img src="assets/images/work.png" class="menu__list-link-img">
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+     
         <div class="main">
             <div class="main__container">
               <div class="login-form">
                 <h2 class ="login-form-name">Account Login</h2>
+                <p class="back-end-error" *ngIf="(validError$ | async)">
+                  <span>{{(validError$ | async)}}</span>
+                </p>
                 <form form [formGroup]="form" (ngSubmit)="onSubmit()">
                   <input type="text" name="username" placeholder="Username" formControlName="username" required>
                   <input type="password" name="password" placeholder="Password" formControlName="password" required>
@@ -84,4 +24,58 @@
     </div>
 
 </body> 
+ -->
 
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <title>Форма входа</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+ </head>
+ 
+ <body>
+     <div class="form-wrapper">
+         <main class="form-side">
+             <a href="#" title="Logo">
+                 <img src="assets/images/logo.svg" alt="Laplace Logo" class="logo">
+             </a>
+             
+             <form class="my-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+                 <div class="form-welcome-row" >
+                     <h1>Добро пожаловать!👏</h1>
+                     <h2>Войдите в свой аккаунт!</h2>
+                 </div>
+                 <p class="back-end-error" *ngIf="(validError$ | async)">
+                  <span>{{(validError$ | async)}}</span>
+                </p>
+                <div class="text-field">
+                    <label for="email">Логин</label>
+                    <input type="login" id="login" name="email" autocomplete="login" placeholder="Введите ваш логин" formControlName="username" required>
+                </div>
+                <div class="text-field">
+                    <label for="password">Пароль</label>
+                    <input id="password" type="password" name="password" placeholder="Ваш пароль" formControlName="password" required>
+                </div>
+                <button class="my-form__button" type="submit" [disabled]="isSubmitting$ | async">
+                    Войти
+                </button>
+                 <div class="my-form__actions">
+                     <div class="my-form__row">
+                         <span>Нет аккаунта?</span>
+                         <a href="#" title="Reset Password">
+                             Зарегистрируйтесь сейчас!
+                         </a>
+                     </div>
+                 </div>
+             </form>
+         </main>
+     </div>
+ </body>
+ 
+ </html>
+ 

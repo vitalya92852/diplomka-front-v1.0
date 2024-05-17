@@ -23,4 +23,14 @@ export const userIdSelector = createSelector(
   (authState:AuthStateInterface) => authState.currentUser
 )
 
+export const validationError = createSelector(
+  authFeatureSelector,
+  (authState:AuthStateInterface) => authState.validationError
+)
+
+export const hasRoleSelector = createSelector(
+  authFeatureSelector,
+  (authState:AuthStateInterface) => authState.currentUser.role
+)
+
 

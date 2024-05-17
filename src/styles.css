@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --bg: #efefef;
+    --primary-color: #191919;
+    --primary: #408cf9;
+    --white: #ffffff;
+    --sidebar-hover: #f5f5f5;
+    --sidebar-bg: #ffffff;
+    --choosen-button: #11b8ff;
+    
+    --text-link: #141b34;
+    --expand-button: #408cf9;
+    --logout: #fa7575;
+    --headline-text: #546471;
+    --text: #141b34;
+    --divider-bg: var(--bg);
+    --shadow-color: #e9e6e4;
+    --shadow: 0px 0px 0px 1.4px var(--shadow-color),
+      0px 0px 2.8px 0px var(--shadow-color);
+
+    --primary: #3a79df;
+    --primary-light: #3a79df;
+    --primary-disabled: #3a79df;
+    --primary-lighter: #3a79df;
+    --secondary: #3a79df;
+    --text: #11181C;
+    --text-gray: #3a79df;
+    --text-placeholder: #3a79df;
+    --border: #DFE3E6;
+    --btn-bg: #EDEDED;
+    --input-bg: #F1F2F3;
+    --background: #F8F8FF;
+    --error: #e5484d;
+
+  }

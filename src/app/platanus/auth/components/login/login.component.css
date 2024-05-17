@@ -1,177 +1,180 @@
-html{
+
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    padding: 1rem;
+    display: grid;
+    place-items: center;
+    background: var(--background);
+    margin: -8px;
+    font-family: "Segoe UI Emoji", "Noto Color Emoji", "Apple Color Emoji", sans-serif;
+
+    
+}
+
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-*,*::after,*::after,*::before{
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
+*::selection {
+    background: var(--primary-light);
+    color: white;
 }
 
-
-
-
-ul{
-    list-style-type: none;
+.form-welcome-row {
+    margin-bottom: 1rem;
 }
 
-a{
-    text-decoration: none;
-    color: inherit;
+.form-welcome-row h1 {
+    color: var(--text);
+    font-size: 2rem;
+    line-height: 2rem;
+    font-weight: normal;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
 }
 
-body{
-    font-weight: 300;
-    font-size: 14px;
-    background-color: #e9faff;
-    background-image: url('/assets/images/bg3.jpg'); 
-    background-size: cover; /* Растягиваем фон на всю площадь */
-    background-repeat: no-repeat; /* Отключаем повторение фона */
-    background-position: center; /* Выравниваем фон по центру */
-    margin: -8px;
+.form-welcome-row h2 {
+    color: var(--text-gray);
+    font-size: 1.10rem;
+    font-weight: normal;
 }
 
-
-.container{
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 10px;
-}
-
-
-.header__inner {
-    padding-top: 13px;
-    padding-bottom: 13px;
+.form-wrapper {
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 1rem;
+    max-height: 200rem;
+    height: 100%;
+    width: 100%;
+}
+
+.form-side {
+    display: flex;
     align-items: center;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-bottom: #E3E3E3 1px solid;
-    background-color: rgb(245, 245, 245);
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
-
-
-   
+    justify-content: center;
+    padding: 0 1rem;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
+    height: 4rem;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
 }
 
-.logo__img {
-    width: 140px;
-    height: 70px;
-}
-
-.logo_name {
-    color: white;
-    font-family: 'Kanit', sans-serif;
-    font-size: 20px; /* Установите соответствующий размер шрифта */
-    margin-left: 10px; /* Добавляем отступ от логотипа */
-}
-
-.menu__list {
-    display: flex;
-    list-style-type: none;
-    font-family: 'Maven Pro', sans-serif;
-    letter-spacing: 5px;
-}
-
-.menu__list-item {
-    margin-right: 30px; 
-    margin-left: 30px;
-    
-}
-
-
-.menu__list-link {
-    display: flex;
-    align-items: center;
-    color: #EA9451;
-    text-decoration: none;
-    font-size: 18px; /* Установите соответствующий размер шрифта */
-    transition: font-size 0.3s ease;
-}
-
-
-
-.menu__list-link-img{
-    margin-left: 10px;
-    height: 25px;
-    width: 25px;
-}
-
-.header {
-    height: 71px;
-}
-
-
-.main {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    min-height: 90vh;
-    width: 100%;
-
-}
-
-.main__container{
+.my-form {
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px 1px rgba(122, 200, 96, 0.06), 0 1px 4px rgba(0,0,0,.08);
     background-color: white;
-    padding-left: 55px;
-    padding-right: 55px;
-    padding-bottom: 75px;
-    padding-top: 75px;
-    border-radius: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-
-
-.login-form-name{
-    margin-bottom: 55px;
-    font-family: 'Maven Pro', sans-serif;
-    
-}
-
-.login-form {
-    text-align: center;
-    width: 300px;
-  }
-  
-  .login-form h2 {
-    font-size: 24px;
-    margin-top: 0;
-  }
-  
-  .login-form input[type="text"],
-  .login-form input[type="password"],
-  .login-form button {
-    font-family: 'Maven Pro', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    position: relative;
+    gap: 1.25rem;
+    max-width: 26rem;
     width: 100%;
-    height: 50px;
-    margin-bottom: 20px;
-    padding: 15px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  .login-form button {
-    background-color: #5DA8FF;
+}
+
+.my-form__button {
+    background: var(--primary);
+    border: 1px solid var(--primary-light);
     color: white;
+    white-space: nowrap;
+    display: grid;
+    place-items: center;
+    margin-top: 1.5rem;
+    line-height: 2.75rem;
+    outline: none;
     border: none;
+    font-size: 1.125rem;
     cursor: pointer;
-    font-size: 18px;
-    transition: all 0.5s ease;
-  }
-  
-  .login-form button:hover {
-    transition: all 0.5s ease;
-    background-color: #428fe7
-  }
-  
+    width: 100%;
+    border-radius: 0.5rem;
+    box-shadow: 0 5px 10px #3a79fd;
+    transition: all .3s ease;
+}
+
+.my-form:invalid .my-form__button {
+    pointer-events: none;
+    background: var(--primary-disabled);
+    border: 1px solid var(--primary-light);
+}
+
+.my-form__actions {
+    display: flex;
+    flex-direction: column;
+    color: var(--secondary);
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.my-form__actions a {
+    color: var(--text);
+}
+
+.my-form__actions a:hover {
+    color: var(--text-gray);
+    text-decoration: underline;
+}
+
+.my-form__row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.text-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.text-field input {
+    color: var(--secondary);
+    max-width: 100%;
+    width: 100%;
+    border: 1px solid var(--border);
+    min-height: 3rem;
+    letter-spacing: .03rem;
+    outline: none;
+    background: var(--input-bg);
+    transition: .25s;
+    border-radius: 0.5rem;
+    text-indent: 1.25rem;
+}
+
+.text-field label {
+    color: var(--text);
+}
 
 
+
+.back-end-error{
+    color:#ff2b2b
+}
+
+
+
+
+
+.text-field input:focus {
+    border: 1px solid var(--text);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 1px 4px 0px;
+}
+
+@media (max-width: 720px) {
+    .form-wrapper {
+        grid-template-columns: 1fr;
+    }
+}

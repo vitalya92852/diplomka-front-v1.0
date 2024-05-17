@@ -34,7 +34,15 @@ export class LoginEffect {
       this.actions$.pipe(
         ofType(loginSuccessAction),
         tap(() => {
-          this.router.navigateByUrl('/goal')
+          this.authService.getCurrentUser().subscribe((user:CurrentUserInterface)=>{
+            if(user.role.includes('ROLE_USER')){
+              this.router.navigateByUrl('/goal')
+            } 
+            if(user.role.includes('ROLE_TEACHER')){
+              this.router.navigateByUrl('/teacher')
+            }
+          })
+          
         })
       ),
     {dispatch: false}

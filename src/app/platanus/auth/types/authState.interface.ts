@@ -8,4 +8,5 @@ export interface AuthStateInterface {
   isSubmitting: boolean
   currentUser: CurrentUserInterface | null
   isLoggedIn: boolean | null
+  validationError: string | null
 }
